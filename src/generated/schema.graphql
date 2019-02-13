@@ -22,6 +22,7 @@ type Post {
   content: String
   createdAt: DateTime!
   id: ID!
+  meta: String
   published: Boolean!
   title: String!
   updatedAt: DateTime!

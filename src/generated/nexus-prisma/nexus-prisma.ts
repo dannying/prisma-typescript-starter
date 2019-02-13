@@ -12,71 +12,76 @@ export interface NexusPrismaTypes {
   objectTypes: {
     fields: {
       Query: QueryObject
+      Post: PostObject
       User: UserObject
-      Story: StoryObject
-      UserConnection: UserConnectionObject
+      PostConnection: PostConnectionObject
       PageInfo: PageInfoObject
+      PostEdge: PostEdgeObject
+      AggregatePost: AggregatePostObject
+      UserConnection: UserConnectionObject
       UserEdge: UserEdgeObject
       AggregateUser: AggregateUserObject
-      StoryConnection: StoryConnectionObject
-      StoryEdge: StoryEdgeObject
-      AggregateStory: AggregateStoryObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
+      PostSubscriptionPayload: PostSubscriptionPayloadObject
+      PostPreviousValues: PostPreviousValuesObject
       UserSubscriptionPayload: UserSubscriptionPayloadObject
       UserPreviousValues: UserPreviousValuesObject
-      StorySubscriptionPayload: StorySubscriptionPayloadObject
-      StoryPreviousValues: StoryPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
+      Post: PostFieldDetails
       User: UserFieldDetails
-      Story: StoryFieldDetails
-      UserConnection: UserConnectionFieldDetails
+      PostConnection: PostConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
+      PostEdge: PostEdgeFieldDetails
+      AggregatePost: AggregatePostFieldDetails
+      UserConnection: UserConnectionFieldDetails
       UserEdge: UserEdgeFieldDetails
       AggregateUser: AggregateUserFieldDetails
-      StoryConnection: StoryConnectionFieldDetails
-      StoryEdge: StoryEdgeFieldDetails
-      AggregateStory: AggregateStoryFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
+      PostSubscriptionPayload: PostSubscriptionPayloadFieldDetails
+      PostPreviousValues: PostPreviousValuesFieldDetails
       UserSubscriptionPayload: UserSubscriptionPayloadFieldDetails
       UserPreviousValues: UserPreviousValuesFieldDetails
-      StorySubscriptionPayload: StorySubscriptionPayloadFieldDetails
-      StoryPreviousValues: StoryPreviousValuesFieldDetails
     }
   }
   inputTypes: {
     fields: {
-      UserWhereUniqueInput: UserWhereUniqueInputInputObject
-      StoryWhereInput: StoryWhereInputInputObject
+      PostWhereUniqueInput: PostWhereUniqueInputInputObject
+      PostWhereInput: PostWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
-      StoryWhereUniqueInput: StoryWhereUniqueInputInputObject
+      UserWhereUniqueInput: UserWhereUniqueInputInputObject
+      PostCreateInput: PostCreateInputInputObject
+      UserCreateOneWithoutPostsInput: UserCreateOneWithoutPostsInputInputObject
+      UserCreateWithoutPostsInput: UserCreateWithoutPostsInputInputObject
+      PostUpdateInput: PostUpdateInputInputObject
+      UserUpdateOneRequiredWithoutPostsInput: UserUpdateOneRequiredWithoutPostsInputInputObject
+      UserUpdateWithoutPostsDataInput: UserUpdateWithoutPostsDataInputInputObject
+      UserUpsertWithoutPostsInput: UserUpsertWithoutPostsInputInputObject
+      PostUpdateManyMutationInput: PostUpdateManyMutationInputInputObject
       UserCreateInput: UserCreateInputInputObject
-      StoryCreateManyWithoutAuthorInput: StoryCreateManyWithoutAuthorInputInputObject
-      StoryCreateWithoutAuthorInput: StoryCreateWithoutAuthorInputInputObject
+      PostCreateManyWithoutAuthorInput: PostCreateManyWithoutAuthorInputInputObject
+      PostCreateWithoutAuthorInput: PostCreateWithoutAuthorInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
-      StoryUpdateManyWithoutAuthorInput: StoryUpdateManyWithoutAuthorInputInputObject
-      StoryUpdateWithWhereUniqueWithoutAuthorInput: StoryUpdateWithWhereUniqueWithoutAuthorInputInputObject
-      StoryUpdateWithoutAuthorDataInput: StoryUpdateWithoutAuthorDataInputInputObject
-      StoryUpsertWithWhereUniqueWithoutAuthorInput: StoryUpsertWithWhereUniqueWithoutAuthorInputInputObject
-      StoryScalarWhereInput: StoryScalarWhereInputInputObject
-      StoryUpdateManyWithWhereNestedInput: StoryUpdateManyWithWhereNestedInputInputObject
-      StoryUpdateManyDataInput: StoryUpdateManyDataInputInputObject
-      StoryCreateInput: StoryCreateInputInputObject
-      UserCreateOneWithoutStoriesInput: UserCreateOneWithoutStoriesInputInputObject
-      StoryUpdateInput: StoryUpdateInputInputObject
-      UserUpdateOneWithoutStoriesInput: UserUpdateOneWithoutStoriesInputInputObject
-      StoryUpdateManyMutationInput: StoryUpdateManyMutationInputInputObject
+      PostUpdateManyWithoutAuthorInput: PostUpdateManyWithoutAuthorInputInputObject
+      PostUpdateWithWhereUniqueWithoutAuthorInput: PostUpdateWithWhereUniqueWithoutAuthorInputInputObject
+      PostUpdateWithoutAuthorDataInput: PostUpdateWithoutAuthorDataInputInputObject
+      PostUpsertWithWhereUniqueWithoutAuthorInput: PostUpsertWithWhereUniqueWithoutAuthorInputInputObject
+      PostScalarWhereInput: PostScalarWhereInputInputObject
+      PostUpdateManyWithWhereNestedInput: PostUpdateManyWithWhereNestedInputInputObject
+      PostUpdateManyDataInput: PostUpdateManyDataInputInputObject
+      UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
+      PostSubscriptionWhereInput: PostSubscriptionWhereInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
-      StorySubscriptionWhereInput: StorySubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
-    StoryOrderByInput: StoryOrderByInputValues,
+    Role: RoleValues,
+    PostOrderByInput: PostOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
     MutationType: MutationTypeValues,
   }
@@ -86,24 +91,42 @@ export interface NexusPrismaTypes {
 
 type QueryObject =
   | QueryFields
+  | { name: 'post', args?: QueryPostArgs[] | false, alias?: string  } 
+  | { name: 'posts', args?: QueryPostsArgs[] | false, alias?: string  } 
+  | { name: 'postsConnection', args?: QueryPostsConnectionArgs[] | false, alias?: string  } 
   | { name: 'user', args?: QueryUserArgs[] | false, alias?: string  } 
   | { name: 'users', args?: QueryUsersArgs[] | false, alias?: string  } 
   | { name: 'usersConnection', args?: QueryUsersConnectionArgs[] | false, alias?: string  } 
-  | { name: 'story', args?: QueryStoryArgs[] | false, alias?: string  } 
-  | { name: 'stories', args?: QueryStoriesArgs[] | false, alias?: string  } 
-  | { name: 'storiesConnection', args?: QueryStoriesConnectionArgs[] | false, alias?: string  } 
   | { name: 'node', args?: QueryNodeArgs[] | false, alias?: string  } 
 
 type QueryFields =
+  | 'post'
+  | 'posts'
+  | 'postsConnection'
   | 'user'
   | 'users'
   | 'usersConnection'
-  | 'story'
-  | 'stories'
-  | 'storiesConnection'
   | 'node'
 
 
+type QueryPostArgs =
+  | 'where'
+type QueryPostsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryPostsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
 type QueryUserArgs =
   | 'where'
 type QueryUsersArgs =
@@ -122,29 +145,50 @@ type QueryUsersConnectionArgs =
   | 'before'
   | 'first'
   | 'last'
-type QueryStoryArgs =
-  | 'where'
-type QueryStoriesArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
-type QueryStoriesConnectionArgs =
-  | 'where'
-  | 'orderBy'
-  | 'skip'
-  | 'after'
-  | 'before'
-  | 'first'
-  | 'last'
 type QueryNodeArgs =
   | 'id'
   
 
 export interface QueryFieldDetails {
+  post: {
+    type: 'Post'
+    args: Record<QueryPostArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: PostWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post | null> | prisma.Post | null
+  }
+  posts: {
+    type: 'Post'
+    args: Record<QueryPostsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post[]> | prisma.Post[]
+  }
+  postsConnection: {
+    type: 'PostConnection'
+    args: Record<QueryPostsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PostConnection> | prisma.PostConnection
+  }
   user: {
     type: 'User'
     args: Record<QueryUserArgs, core.NexusArgDef<string>>
@@ -184,45 +228,6 @@ export interface QueryFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserConnection> | prisma.UserConnection
   }
-  story: {
-    type: 'Story'
-    args: Record<QueryStoryArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where: StoryWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story | null> | prisma.Story | null
-  }
-  stories: {
-    type: 'Story'
-    args: Record<QueryStoriesArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: StoryWhereInput | null, orderBy?: prisma.StoryOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story[]> | prisma.Story[]
-  }
-  storiesConnection: {
-    type: 'StoryConnection'
-    args: Record<QueryStoriesConnectionArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Query">,
-      args: { where?: StoryWhereInput | null, orderBy?: prisma.StoryOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.StoryConnection> | prisma.StoryConnection
-  }
   node: {
     type: 'Node'
     args: Record<QueryNodeArgs, core.NexusArgDef<string>>
@@ -239,19 +244,127 @@ export interface QueryFieldDetails {
 }
   
 
+// Types for Post
+
+type PostObject =
+  | PostFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'published', args?: [] | false, alias?: string  } 
+  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'content', args?: [] | false, alias?: string  } 
+  | { name: 'author', args?: [] | false, alias?: string  } 
+  | { name: 'meta', args?: [] | false, alias?: string  } 
+
+type PostFields =
+  | 'id'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'published'
+  | 'title'
+  | 'content'
+  | 'author'
+  | 'meta'
+
+
+
+  
+
+export interface PostFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  published: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  content: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  author: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Post">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
+  meta: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+  
+
 // Types for User
 
 type UserObject =
   | UserFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'stories', args?: UserStoriesArgs[] | false, alias?: string  } 
+  | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'password', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'posts', args?: UserPostsArgs[] | false, alias?: string  } 
+  | { name: 'role', args?: [] | false, alias?: string  } 
 
 type UserFields =
   | 'id'
-  | 'stories'
+  | 'email'
+  | 'password'
+  | 'name'
+  | 'posts'
+  | 'role'
 
 
-type UserStoriesArgs =
+type UserPostsArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -270,49 +383,7 @@ export interface UserFieldDetails {
     nullable: false
     resolve: undefined
   }
-  stories: {
-    type: 'Story'
-    args: Record<UserStoriesArgs, core.NexusArgDef<string>>
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"User">,
-      args: { where?: StoryWhereInput | null, orderBy?: prisma.StoryOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story[]> | prisma.Story[]
-  }
-}
-  
-
-// Types for Story
-
-type StoryObject =
-  | StoryFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'text', args?: [] | false, alias?: string  } 
-  | { name: 'author', args?: [] | false, alias?: string  } 
-
-type StoryFields =
-  | 'id'
-  | 'text'
-  | 'author'
-
-
-
-  
-
-export interface StoryFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  text: {
+  email: {
     type: 'String'
     args: {}
     description: string
@@ -320,18 +391,227 @@ export interface StoryFieldDetails {
     nullable: false
     resolve: undefined
   }
-  author: {
-    type: 'User'
+  password: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
     nullable: true
+    resolve: undefined
+  }
+  posts: {
+    type: 'Post'
+    args: Record<UserPostsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
     resolve: (
-      root: core.RootValue<"Story">,
+      root: core.RootValue<"User">,
+      args: { where?: PostWhereInput | null, orderBy?: prisma.PostOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post[]> | prisma.Post[]
+  }
+  role: {
+    type: 'Role'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"User">,
       args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.User | null> | prisma.User | null
+    ) => Promise<prisma.Role> | prisma.Role
+  }
+}
+  
+
+// Types for PostConnection
+
+type PostConnectionObject =
+  | PostConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type PostConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface PostConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PostConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'PostEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PostConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PostEdge[]> | prisma.PostEdge[]
+  }
+  aggregate: {
+    type: 'AggregatePost'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PostConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregatePost> | prisma.AggregatePost
+  }
+}
+  
+
+// Types for PageInfo
+
+type PageInfoObject =
+  | PageInfoFields
+  | { name: 'hasNextPage', args?: [] | false, alias?: string  } 
+  | { name: 'hasPreviousPage', args?: [] | false, alias?: string  } 
+  | { name: 'startCursor', args?: [] | false, alias?: string  } 
+  | { name: 'endCursor', args?: [] | false, alias?: string  } 
+
+type PageInfoFields =
+  | 'hasNextPage'
+  | 'hasPreviousPage'
+  | 'startCursor'
+  | 'endCursor'
+
+
+
+  
+
+export interface PageInfoFieldDetails {
+  hasNextPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  hasPreviousPage: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  startCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  endCursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+}
+  
+
+// Types for PostEdge
+
+type PostEdgeObject =
+  | PostEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type PostEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface PostEdgeFieldDetails {
+  node: {
+    type: 'Post'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PostEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post> | prisma.Post
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregatePost
+
+type AggregatePostObject =
+  | AggregatePostFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregatePostFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregatePostFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
 }
   
@@ -392,61 +672,6 @@ export interface UserConnectionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.AggregateUser> | prisma.AggregateUser
-  }
-}
-  
-
-// Types for PageInfo
-
-type PageInfoObject =
-  | PageInfoFields
-  | { name: 'hasNextPage', args?: [] | false, alias?: string  } 
-  | { name: 'hasPreviousPage', args?: [] | false, alias?: string  } 
-  | { name: 'startCursor', args?: [] | false, alias?: string  } 
-  | { name: 'endCursor', args?: [] | false, alias?: string  } 
-
-type PageInfoFields =
-  | 'hasNextPage'
-  | 'hasPreviousPage'
-  | 'startCursor'
-  | 'endCursor'
-
-
-
-  
-
-export interface PageInfoFieldDetails {
-  hasNextPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  hasPreviousPage: {
-    type: 'Boolean'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  startCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
-  }
-  endCursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: undefined
   }
 }
   
@@ -516,164 +741,60 @@ export interface AggregateUserFieldDetails {
 }
   
 
-// Types for StoryConnection
-
-type StoryConnectionObject =
-  | StoryConnectionFields
-  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
-  | { name: 'edges', args?: [] | false, alias?: string  } 
-  | { name: 'aggregate', args?: [] | false, alias?: string  } 
-
-type StoryConnectionFields =
-  | 'pageInfo'
-  | 'edges'
-  | 'aggregate'
-
-
-
-  
-
-export interface StoryConnectionFieldDetails {
-  pageInfo: {
-    type: 'PageInfo'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"StoryConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.PageInfo> | prisma.PageInfo
-  }
-  edges: {
-    type: 'StoryEdge'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: (
-      root: core.RootValue<"StoryConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.StoryEdge[]> | prisma.StoryEdge[]
-  }
-  aggregate: {
-    type: 'AggregateStory'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"StoryConnection">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.AggregateStory> | prisma.AggregateStory
-  }
-}
-  
-
-// Types for StoryEdge
-
-type StoryEdgeObject =
-  | StoryEdgeFields
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'cursor', args?: [] | false, alias?: string  } 
-
-type StoryEdgeFields =
-  | 'node'
-  | 'cursor'
-
-
-
-  
-
-export interface StoryEdgeFieldDetails {
-  node: {
-    type: 'Story'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"StoryEdge">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story> | prisma.Story
-  }
-  cursor: {
-    type: 'String'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
-// Types for AggregateStory
-
-type AggregateStoryObject =
-  | AggregateStoryFields
-  | { name: 'count', args?: [] | false, alias?: string  } 
-
-type AggregateStoryFields =
-  | 'count'
-
-
-
-  
-
-export interface AggregateStoryFieldDetails {
-  count: {
-    type: 'Int'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-}
-  
-
 // Types for Mutation
 
 type MutationObject =
   | MutationFields
+  | { name: 'createPost', args?: MutationCreatePostArgs[] | false, alias?: string  } 
+  | { name: 'updatePost', args?: MutationUpdatePostArgs[] | false, alias?: string  } 
+  | { name: 'updateManyPosts', args?: MutationUpdateManyPostsArgs[] | false, alias?: string  } 
+  | { name: 'upsertPost', args?: MutationUpsertPostArgs[] | false, alias?: string  } 
+  | { name: 'deletePost', args?: MutationDeletePostArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyPosts', args?: MutationDeleteManyPostsArgs[] | false, alias?: string  } 
   | { name: 'createUser', args?: MutationCreateUserArgs[] | false, alias?: string  } 
   | { name: 'updateUser', args?: MutationUpdateUserArgs[] | false, alias?: string  } 
+  | { name: 'updateManyUsers', args?: MutationUpdateManyUsersArgs[] | false, alias?: string  } 
   | { name: 'upsertUser', args?: MutationUpsertUserArgs[] | false, alias?: string  } 
   | { name: 'deleteUser', args?: MutationDeleteUserArgs[] | false, alias?: string  } 
   | { name: 'deleteManyUsers', args?: MutationDeleteManyUsersArgs[] | false, alias?: string  } 
-  | { name: 'createStory', args?: MutationCreateStoryArgs[] | false, alias?: string  } 
-  | { name: 'updateStory', args?: MutationUpdateStoryArgs[] | false, alias?: string  } 
-  | { name: 'updateManyStories', args?: MutationUpdateManyStoriesArgs[] | false, alias?: string  } 
-  | { name: 'upsertStory', args?: MutationUpsertStoryArgs[] | false, alias?: string  } 
-  | { name: 'deleteStory', args?: MutationDeleteStoryArgs[] | false, alias?: string  } 
-  | { name: 'deleteManyStories', args?: MutationDeleteManyStoriesArgs[] | false, alias?: string  } 
 
 type MutationFields =
+  | 'createPost'
+  | 'updatePost'
+  | 'updateManyPosts'
+  | 'upsertPost'
+  | 'deletePost'
+  | 'deleteManyPosts'
   | 'createUser'
   | 'updateUser'
+  | 'updateManyUsers'
   | 'upsertUser'
   | 'deleteUser'
   | 'deleteManyUsers'
-  | 'createStory'
-  | 'updateStory'
-  | 'updateManyStories'
-  | 'upsertStory'
-  | 'deleteStory'
-  | 'deleteManyStories'
 
 
+type MutationCreatePostArgs =
+  | 'data'
+type MutationUpdatePostArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyPostsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertPostArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeletePostArgs =
+  | 'where'
+type MutationDeleteManyPostsArgs =
+  | 'where'
 type MutationCreateUserArgs =
   | 'data'
 type MutationUpdateUserArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyUsersArgs =
   | 'data'
   | 'where'
 type MutationUpsertUserArgs =
@@ -684,25 +805,87 @@ type MutationDeleteUserArgs =
   | 'where'
 type MutationDeleteManyUsersArgs =
   | 'where'
-type MutationCreateStoryArgs =
-  | 'data'
-type MutationUpdateStoryArgs =
-  | 'data'
-  | 'where'
-type MutationUpdateManyStoriesArgs =
-  | 'data'
-  | 'where'
-type MutationUpsertStoryArgs =
-  | 'where'
-  | 'create'
-  | 'update'
-type MutationDeleteStoryArgs =
-  | 'where'
-type MutationDeleteManyStoriesArgs =
-  | 'where'
   
 
 export interface MutationFieldDetails {
+  createPost: {
+    type: 'Post'
+    args: Record<MutationCreatePostArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PostCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post> | prisma.Post
+  }
+  updatePost: {
+    type: 'Post'
+    args: Record<MutationUpdatePostArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PostUpdateInput, where: PostWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post | null> | prisma.Post | null
+  }
+  updateManyPosts: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyPostsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: PostUpdateManyMutationInput, where?: PostWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertPost: {
+    type: 'Post'
+    args: Record<MutationUpsertPostArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PostWhereUniqueInput, create: PostCreateInput, update: PostUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post> | prisma.Post
+  }
+  deletePost: {
+    type: 'Post'
+    args: Record<MutationDeletePostArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: PostWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Post | null> | prisma.Post | null
+  }
+  deleteManyPosts: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyPostsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: PostWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
   createUser: {
     type: 'User'
     args: Record<MutationCreateUserArgs, core.NexusArgDef<string>>
@@ -728,6 +911,19 @@ export interface MutationFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.User | null> | prisma.User | null
+  }
+  updateManyUsers: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyUsersArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
   upsertUser: {
     type: 'User'
@@ -768,84 +964,6 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
-  createStory: {
-    type: 'Story'
-    args: Record<MutationCreateStoryArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: StoryCreateInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story> | prisma.Story
-  }
-  updateStory: {
-    type: 'Story'
-    args: Record<MutationUpdateStoryArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: StoryUpdateInput, where: StoryWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story | null> | prisma.Story | null
-  }
-  updateManyStories: {
-    type: 'BatchPayload'
-    args: Record<MutationUpdateManyStoriesArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { data: StoryUpdateManyMutationInput, where?: StoryWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
-  upsertStory: {
-    type: 'Story'
-    args: Record<MutationUpsertStoryArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: StoryWhereUniqueInput, create: StoryCreateInput, update: StoryUpdateInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story> | prisma.Story
-  }
-  deleteStory: {
-    type: 'Story'
-    args: Record<MutationDeleteStoryArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where: StoryWhereUniqueInput }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story | null> | prisma.Story | null
-  }
-  deleteManyStories: {
-    type: 'BatchPayload'
-    args: Record<MutationDeleteManyStoriesArgs, core.NexusArgDef<string>>
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"Mutation">,
-      args: { where?: StoryWhereInput | null }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
-  }
 }
   
 
@@ -878,21 +996,34 @@ export interface BatchPayloadFieldDetails {
 
 type SubscriptionObject =
   | SubscriptionFields
+  | { name: 'post', args?: SubscriptionPostArgs[] | false, alias?: string  } 
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
-  | { name: 'story', args?: SubscriptionStoryArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
+  | 'post'
   | 'user'
-  | 'story'
 
 
-type SubscriptionUserArgs =
+type SubscriptionPostArgs =
   | 'where'
-type SubscriptionStoryArgs =
+type SubscriptionUserArgs =
   | 'where'
   
 
 export interface SubscriptionFieldDetails {
+  post: {
+    type: 'PostSubscriptionPayload'
+    args: Record<SubscriptionPostArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: PostSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PostSubscriptionPayload | null> | prisma.PostSubscriptionPayload | null
+  }
   user: {
     type: 'UserSubscriptionPayload'
     args: Record<SubscriptionUserArgs, core.NexusArgDef<string>>
@@ -906,18 +1037,160 @@ export interface SubscriptionFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.UserSubscriptionPayload | null> | prisma.UserSubscriptionPayload | null
   }
-  story: {
-    type: 'StorySubscriptionPayload'
-    args: Record<SubscriptionStoryArgs, core.NexusArgDef<string>>
+}
+  
+
+// Types for PostSubscriptionPayload
+
+type PostSubscriptionPayloadObject =
+  | PostSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type PostSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface PostSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"PostSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'Post'
+    args: {}
     description: string
     list: undefined
     nullable: true
     resolve: (
-      root: core.RootValue<"Subscription">,
-      args: { where?: StorySubscriptionWhereInput | null }  ,
+      root: core.RootValue<"PostSubscriptionPayload">,
+      args: {  }  ,
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
-    ) => Promise<prisma.StorySubscriptionPayload | null> | prisma.StorySubscriptionPayload | null
+    ) => Promise<prisma.Post | null> | prisma.Post | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'PostPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"PostSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PostPreviousValues | null> | prisma.PostPreviousValues | null
+  }
+}
+  
+
+// Types for PostPreviousValues
+
+type PostPreviousValuesObject =
+  | PostPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'createdAt', args?: [] | false, alias?: string  } 
+  | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'published', args?: [] | false, alias?: string  } 
+  | { name: 'title', args?: [] | false, alias?: string  } 
+  | { name: 'content', args?: [] | false, alias?: string  } 
+  | { name: 'meta', args?: [] | false, alias?: string  } 
+
+type PostPreviousValuesFields =
+  | 'id'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'published'
+  | 'title'
+  | 'content'
+  | 'meta'
+
+
+
+  
+
+export interface PostPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  createdAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  updatedAt: {
+    type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  published: {
+    type: 'Boolean'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  title: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  content: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  meta: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
   }
 }
   
@@ -997,9 +1270,17 @@ export interface UserSubscriptionPayloadFieldDetails {
 type UserPreviousValuesObject =
   | UserPreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'email', args?: [] | false, alias?: string  } 
+  | { name: 'password', args?: [] | false, alias?: string  } 
+  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'role', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
+  | 'email'
+  | 'password'
+  | 'name'
+  | 'role'
 
 
 
@@ -1014,104 +1295,7 @@ export interface UserPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-}
-  
-
-// Types for StorySubscriptionPayload
-
-type StorySubscriptionPayloadObject =
-  | StorySubscriptionPayloadFields
-  | { name: 'mutation', args?: [] | false, alias?: string  } 
-  | { name: 'node', args?: [] | false, alias?: string  } 
-  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
-  | { name: 'previousValues', args?: [] | false, alias?: string  } 
-
-type StorySubscriptionPayloadFields =
-  | 'mutation'
-  | 'node'
-  | 'updatedFields'
-  | 'previousValues'
-
-
-
-  
-
-export interface StorySubscriptionPayloadFieldDetails {
-  mutation: {
-    type: 'MutationType'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: (
-      root: core.RootValue<"StorySubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.MutationType> | prisma.MutationType
-  }
-  node: {
-    type: 'Story'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"StorySubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.Story | null> | prisma.Story | null
-  }
-  updatedFields: {
-    type: 'String'
-    args: {}
-    description: string
-    list: true
-    nullable: false
-    resolve: undefined
-  }
-  previousValues: {
-    type: 'StoryPreviousValues'
-    args: {}
-    description: string
-    list: undefined
-    nullable: true
-    resolve: (
-      root: core.RootValue<"StorySubscriptionPayload">,
-      args: {  }  ,
-      context: core.GetGen<"context">,
-      info?: GraphQLResolveInfo
-    ) => Promise<prisma.StoryPreviousValues | null> | prisma.StoryPreviousValues | null
-  }
-}
-  
-
-// Types for StoryPreviousValues
-
-type StoryPreviousValuesObject =
-  | StoryPreviousValuesFields
-  | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'text', args?: [] | false, alias?: string  } 
-
-type StoryPreviousValuesFields =
-  | 'id'
-  | 'text'
-
-
-
-  
-
-export interface StoryPreviousValuesFieldDetails {
-  id: {
-    type: 'ID'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  text: {
+  email: {
     type: 'String'
     args: {}
     description: string
@@ -1119,18 +1303,47 @@ export interface StoryPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
+  password: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  name: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  role: {
+    type: 'Role'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"UserPreviousValues">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.Role> | prisma.Role
+  }
 }
   
 
 
-export interface UserWhereUniqueInput {
+export interface PostWhereUniqueInput {
   id?: string | null
 }
-export type UserWhereUniqueInputInputObject =
-  | Extract<keyof UserWhereUniqueInput, string>
+export type PostWhereUniqueInputInputObject =
+  | Extract<keyof PostWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
-export interface StoryWhereInput {
+export interface PostWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -1145,27 +1358,73 @@ export interface StoryWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  text?: string | null
-  text_not?: string | null
-  text_in?: string[]
-  text_not_in?: string[]
-  text_lt?: string | null
-  text_lte?: string | null
-  text_gt?: string | null
-  text_gte?: string | null
-  text_contains?: string | null
-  text_not_contains?: string | null
-  text_starts_with?: string | null
-  text_not_starts_with?: string | null
-  text_ends_with?: string | null
-  text_not_ends_with?: string | null
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  published?: boolean | null
+  published_not?: boolean | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  content?: string | null
+  content_not?: string | null
+  content_in?: string[]
+  content_not_in?: string[]
+  content_lt?: string | null
+  content_lte?: string | null
+  content_gt?: string | null
+  content_gte?: string | null
+  content_contains?: string | null
+  content_not_contains?: string | null
+  content_starts_with?: string | null
+  content_not_starts_with?: string | null
+  content_ends_with?: string | null
+  content_not_ends_with?: string | null
   author?: UserWhereInput | null
-  AND?: StoryWhereInput[]
-  OR?: StoryWhereInput[]
-  NOT?: StoryWhereInput[]
+  meta?: string | null
+  meta_not?: string | null
+  meta_in?: string[]
+  meta_not_in?: string[]
+  meta_lt?: string | null
+  meta_lte?: string | null
+  meta_gt?: string | null
+  meta_gte?: string | null
+  meta_contains?: string | null
+  meta_not_contains?: string | null
+  meta_starts_with?: string | null
+  meta_not_starts_with?: string | null
+  meta_ends_with?: string | null
+  meta_not_ends_with?: string | null
+  AND?: PostWhereInput[]
+  OR?: PostWhereInput[]
+  NOT?: PostWhereInput[]
 }
-export type StoryWhereInputInputObject =
-  | Extract<keyof StoryWhereInput, string>
+export type PostWhereInputInputObject =
+  | Extract<keyof PostWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -1180,21 +1439,67 @@ export type StoryWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'text', alias?: string  } 
-  | { name: 'text_not', alias?: string  } 
-  | { name: 'text_in', alias?: string  } 
-  | { name: 'text_not_in', alias?: string  } 
-  | { name: 'text_lt', alias?: string  } 
-  | { name: 'text_lte', alias?: string  } 
-  | { name: 'text_gt', alias?: string  } 
-  | { name: 'text_gte', alias?: string  } 
-  | { name: 'text_contains', alias?: string  } 
-  | { name: 'text_not_contains', alias?: string  } 
-  | { name: 'text_starts_with', alias?: string  } 
-  | { name: 'text_not_starts_with', alias?: string  } 
-  | { name: 'text_ends_with', alias?: string  } 
-  | { name: 'text_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'published', alias?: string  } 
+  | { name: 'published_not', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'title_not', alias?: string  } 
+  | { name: 'title_in', alias?: string  } 
+  | { name: 'title_not_in', alias?: string  } 
+  | { name: 'title_lt', alias?: string  } 
+  | { name: 'title_lte', alias?: string  } 
+  | { name: 'title_gt', alias?: string  } 
+  | { name: 'title_gte', alias?: string  } 
+  | { name: 'title_contains', alias?: string  } 
+  | { name: 'title_not_contains', alias?: string  } 
+  | { name: 'title_starts_with', alias?: string  } 
+  | { name: 'title_not_starts_with', alias?: string  } 
+  | { name: 'title_ends_with', alias?: string  } 
+  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'content_not', alias?: string  } 
+  | { name: 'content_in', alias?: string  } 
+  | { name: 'content_not_in', alias?: string  } 
+  | { name: 'content_lt', alias?: string  } 
+  | { name: 'content_lte', alias?: string  } 
+  | { name: 'content_gt', alias?: string  } 
+  | { name: 'content_gte', alias?: string  } 
+  | { name: 'content_contains', alias?: string  } 
+  | { name: 'content_not_contains', alias?: string  } 
+  | { name: 'content_starts_with', alias?: string  } 
+  | { name: 'content_not_starts_with', alias?: string  } 
+  | { name: 'content_ends_with', alias?: string  } 
+  | { name: 'content_not_ends_with', alias?: string  } 
   | { name: 'author', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
+  | { name: 'meta_not', alias?: string  } 
+  | { name: 'meta_in', alias?: string  } 
+  | { name: 'meta_not_in', alias?: string  } 
+  | { name: 'meta_lt', alias?: string  } 
+  | { name: 'meta_lte', alias?: string  } 
+  | { name: 'meta_gt', alias?: string  } 
+  | { name: 'meta_gte', alias?: string  } 
+  | { name: 'meta_contains', alias?: string  } 
+  | { name: 'meta_not_contains', alias?: string  } 
+  | { name: 'meta_starts_with', alias?: string  } 
+  | { name: 'meta_not_starts_with', alias?: string  } 
+  | { name: 'meta_ends_with', alias?: string  } 
+  | { name: 'meta_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -1214,9 +1519,55 @@ export interface UserWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  stories_every?: StoryWhereInput | null
-  stories_some?: StoryWhereInput | null
-  stories_none?: StoryWhereInput | null
+  email?: string | null
+  email_not?: string | null
+  email_in?: string[]
+  email_not_in?: string[]
+  email_lt?: string | null
+  email_lte?: string | null
+  email_gt?: string | null
+  email_gte?: string | null
+  email_contains?: string | null
+  email_not_contains?: string | null
+  email_starts_with?: string | null
+  email_not_starts_with?: string | null
+  email_ends_with?: string | null
+  email_not_ends_with?: string | null
+  password?: string | null
+  password_not?: string | null
+  password_in?: string[]
+  password_not_in?: string[]
+  password_lt?: string | null
+  password_lte?: string | null
+  password_gt?: string | null
+  password_gte?: string | null
+  password_contains?: string | null
+  password_not_contains?: string | null
+  password_starts_with?: string | null
+  password_not_starts_with?: string | null
+  password_ends_with?: string | null
+  password_not_ends_with?: string | null
+  name?: string | null
+  name_not?: string | null
+  name_in?: string[]
+  name_not_in?: string[]
+  name_lt?: string | null
+  name_lte?: string | null
+  name_gt?: string | null
+  name_gte?: string | null
+  name_contains?: string | null
+  name_not_contains?: string | null
+  name_starts_with?: string | null
+  name_not_starts_with?: string | null
+  name_ends_with?: string | null
+  name_not_ends_with?: string | null
+  posts_every?: PostWhereInput | null
+  posts_some?: PostWhereInput | null
+  posts_none?: PostWhereInput | null
+  role?: prisma.Role | null
+  role_not?: prisma.Role | null
+  role_in?: prisma.Role[]
+  role_not_in?: prisma.Role[]
   AND?: UserWhereInput[]
   OR?: UserWhereInput[]
   NOT?: UserWhereInput[]
@@ -1237,63 +1588,233 @@ export type UserWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'stories_every', alias?: string  } 
-  | { name: 'stories_some', alias?: string  } 
-  | { name: 'stories_none', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'email_not', alias?: string  } 
+  | { name: 'email_in', alias?: string  } 
+  | { name: 'email_not_in', alias?: string  } 
+  | { name: 'email_lt', alias?: string  } 
+  | { name: 'email_lte', alias?: string  } 
+  | { name: 'email_gt', alias?: string  } 
+  | { name: 'email_gte', alias?: string  } 
+  | { name: 'email_contains', alias?: string  } 
+  | { name: 'email_not_contains', alias?: string  } 
+  | { name: 'email_starts_with', alias?: string  } 
+  | { name: 'email_not_starts_with', alias?: string  } 
+  | { name: 'email_ends_with', alias?: string  } 
+  | { name: 'email_not_ends_with', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'password_not', alias?: string  } 
+  | { name: 'password_in', alias?: string  } 
+  | { name: 'password_not_in', alias?: string  } 
+  | { name: 'password_lt', alias?: string  } 
+  | { name: 'password_lte', alias?: string  } 
+  | { name: 'password_gt', alias?: string  } 
+  | { name: 'password_gte', alias?: string  } 
+  | { name: 'password_contains', alias?: string  } 
+  | { name: 'password_not_contains', alias?: string  } 
+  | { name: 'password_starts_with', alias?: string  } 
+  | { name: 'password_not_starts_with', alias?: string  } 
+  | { name: 'password_ends_with', alias?: string  } 
+  | { name: 'password_not_ends_with', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'name_not', alias?: string  } 
+  | { name: 'name_in', alias?: string  } 
+  | { name: 'name_not_in', alias?: string  } 
+  | { name: 'name_lt', alias?: string  } 
+  | { name: 'name_lte', alias?: string  } 
+  | { name: 'name_gt', alias?: string  } 
+  | { name: 'name_gte', alias?: string  } 
+  | { name: 'name_contains', alias?: string  } 
+  | { name: 'name_not_contains', alias?: string  } 
+  | { name: 'name_starts_with', alias?: string  } 
+  | { name: 'name_not_starts_with', alias?: string  } 
+  | { name: 'name_ends_with', alias?: string  } 
+  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'posts_every', alias?: string  } 
+  | { name: 'posts_some', alias?: string  } 
+  | { name: 'posts_none', alias?: string  } 
+  | { name: 'role', alias?: string  } 
+  | { name: 'role_not', alias?: string  } 
+  | { name: 'role_in', alias?: string  } 
+  | { name: 'role_not_in', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface StoryWhereUniqueInput {
+export interface UserWhereUniqueInput {
   id?: string | null
+  email?: string | null
 }
-export type StoryWhereUniqueInputInputObject =
-  | Extract<keyof StoryWhereUniqueInput, string>
+export type UserWhereUniqueInputInputObject =
+  | Extract<keyof UserWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'email', alias?: string  } 
   
-export interface UserCreateInput {
-  stories?: StoryCreateManyWithoutAuthorInput | null
+export interface PostCreateInput {
+  published?: boolean | null
+  title?: string
+  content?: string | null
+  author?: UserCreateOneWithoutPostsInput
+  meta?: string | null
 }
-export type UserCreateInputInputObject =
-  | Extract<keyof UserCreateInput, string>
-  | { name: 'stories', alias?: string  } 
+export type PostCreateInputInputObject =
+  | Extract<keyof PostCreateInput, string>
+  | { name: 'published', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
   
-export interface StoryCreateManyWithoutAuthorInput {
-  create?: StoryCreateWithoutAuthorInput[]
-  connect?: StoryWhereUniqueInput[]
+export interface UserCreateOneWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput | null
+  connect?: UserWhereUniqueInput | null
 }
-export type StoryCreateManyWithoutAuthorInputInputObject =
-  | Extract<keyof StoryCreateManyWithoutAuthorInput, string>
+export type UserCreateOneWithoutPostsInputInputObject =
+  | Extract<keyof UserCreateOneWithoutPostsInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface StoryCreateWithoutAuthorInput {
-  text?: string
+export interface UserCreateWithoutPostsInput {
+  email?: string
+  password?: string
+  name?: string | null
+  role?: prisma.Role | null
 }
-export type StoryCreateWithoutAuthorInputInputObject =
-  | Extract<keyof StoryCreateWithoutAuthorInput, string>
-  | { name: 'text', alias?: string  } 
+export type UserCreateWithoutPostsInputInputObject =
+  | Extract<keyof UserCreateWithoutPostsInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'role', alias?: string  } 
+  
+export interface PostUpdateInput {
+  published?: boolean | null
+  title?: string | null
+  content?: string | null
+  author?: UserUpdateOneRequiredWithoutPostsInput | null
+  meta?: string | null
+}
+export type PostUpdateInputInputObject =
+  | Extract<keyof PostUpdateInput, string>
+  | { name: 'published', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'author', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
+  
+export interface UserUpdateOneRequiredWithoutPostsInput {
+  create?: UserCreateWithoutPostsInput | null
+  update?: UserUpdateWithoutPostsDataInput | null
+  upsert?: UserUpsertWithoutPostsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneRequiredWithoutPostsInputInputObject =
+  | Extract<keyof UserUpdateOneRequiredWithoutPostsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateWithoutPostsDataInput {
+  email?: string | null
+  password?: string | null
+  name?: string | null
+  role?: prisma.Role | null
+}
+export type UserUpdateWithoutPostsDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutPostsDataInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'role', alias?: string  } 
+  
+export interface UserUpsertWithoutPostsInput {
+  update?: UserUpdateWithoutPostsDataInput
+  create?: UserCreateWithoutPostsInput
+}
+export type UserUpsertWithoutPostsInputInputObject =
+  | Extract<keyof UserUpsertWithoutPostsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface PostUpdateManyMutationInput {
+  published?: boolean | null
+  title?: string | null
+  content?: string | null
+  meta?: string | null
+}
+export type PostUpdateManyMutationInputInputObject =
+  | Extract<keyof PostUpdateManyMutationInput, string>
+  | { name: 'published', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
+  
+export interface UserCreateInput {
+  email?: string
+  password?: string
+  name?: string | null
+  posts?: PostCreateManyWithoutAuthorInput | null
+  role?: prisma.Role | null
+}
+export type UserCreateInputInputObject =
+  | Extract<keyof UserCreateInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'role', alias?: string  } 
+  
+export interface PostCreateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[]
+  connect?: PostWhereUniqueInput[]
+}
+export type PostCreateManyWithoutAuthorInputInputObject =
+  | Extract<keyof PostCreateManyWithoutAuthorInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface PostCreateWithoutAuthorInput {
+  published?: boolean | null
+  title?: string
+  content?: string | null
+  meta?: string | null
+}
+export type PostCreateWithoutAuthorInputInputObject =
+  | Extract<keyof PostCreateWithoutAuthorInput, string>
+  | { name: 'published', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
   
 export interface UserUpdateInput {
-  stories?: StoryUpdateManyWithoutAuthorInput | null
+  email?: string | null
+  password?: string | null
+  name?: string | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
+  role?: prisma.Role | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
-  | { name: 'stories', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'posts', alias?: string  } 
+  | { name: 'role', alias?: string  } 
   
-export interface StoryUpdateManyWithoutAuthorInput {
-  create?: StoryCreateWithoutAuthorInput[]
-  delete?: StoryWhereUniqueInput[]
-  connect?: StoryWhereUniqueInput[]
-  set?: StoryWhereUniqueInput[]
-  disconnect?: StoryWhereUniqueInput[]
-  update?: StoryUpdateWithWhereUniqueWithoutAuthorInput[]
-  upsert?: StoryUpsertWithWhereUniqueWithoutAuthorInput[]
-  deleteMany?: StoryScalarWhereInput[]
-  updateMany?: StoryUpdateManyWithWhereNestedInput[]
+export interface PostUpdateManyWithoutAuthorInput {
+  create?: PostCreateWithoutAuthorInput[]
+  delete?: PostWhereUniqueInput[]
+  connect?: PostWhereUniqueInput[]
+  set?: PostWhereUniqueInput[]
+  disconnect?: PostWhereUniqueInput[]
+  update?: PostUpdateWithWhereUniqueWithoutAuthorInput[]
+  upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput[]
+  deleteMany?: PostScalarWhereInput[]
+  updateMany?: PostUpdateManyWithWhereNestedInput[]
 }
-export type StoryUpdateManyWithoutAuthorInputInputObject =
-  | Extract<keyof StoryUpdateManyWithoutAuthorInput, string>
+export type PostUpdateManyWithoutAuthorInputInputObject =
+  | Extract<keyof PostUpdateManyWithoutAuthorInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -1304,34 +1825,40 @@ export type StoryUpdateManyWithoutAuthorInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface StoryUpdateWithWhereUniqueWithoutAuthorInput {
-  where?: StoryWhereUniqueInput
-  data?: StoryUpdateWithoutAuthorDataInput
+export interface PostUpdateWithWhereUniqueWithoutAuthorInput {
+  where?: PostWhereUniqueInput
+  data?: PostUpdateWithoutAuthorDataInput
 }
-export type StoryUpdateWithWhereUniqueWithoutAuthorInputInputObject =
-  | Extract<keyof StoryUpdateWithWhereUniqueWithoutAuthorInput, string>
+export type PostUpdateWithWhereUniqueWithoutAuthorInputInputObject =
+  | Extract<keyof PostUpdateWithWhereUniqueWithoutAuthorInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface StoryUpdateWithoutAuthorDataInput {
-  text?: string | null
+export interface PostUpdateWithoutAuthorDataInput {
+  published?: boolean | null
+  title?: string | null
+  content?: string | null
+  meta?: string | null
 }
-export type StoryUpdateWithoutAuthorDataInputInputObject =
-  | Extract<keyof StoryUpdateWithoutAuthorDataInput, string>
-  | { name: 'text', alias?: string  } 
+export type PostUpdateWithoutAuthorDataInputInputObject =
+  | Extract<keyof PostUpdateWithoutAuthorDataInput, string>
+  | { name: 'published', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
   
-export interface StoryUpsertWithWhereUniqueWithoutAuthorInput {
-  where?: StoryWhereUniqueInput
-  update?: StoryUpdateWithoutAuthorDataInput
-  create?: StoryCreateWithoutAuthorInput
+export interface PostUpsertWithWhereUniqueWithoutAuthorInput {
+  where?: PostWhereUniqueInput
+  update?: PostUpdateWithoutAuthorDataInput
+  create?: PostCreateWithoutAuthorInput
 }
-export type StoryUpsertWithWhereUniqueWithoutAuthorInputInputObject =
-  | Extract<keyof StoryUpsertWithWhereUniqueWithoutAuthorInput, string>
+export type PostUpsertWithWhereUniqueWithoutAuthorInputInputObject =
+  | Extract<keyof PostUpsertWithWhereUniqueWithoutAuthorInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
   
-export interface StoryScalarWhereInput {
+export interface PostScalarWhereInput {
   id?: string | null
   id_not?: string | null
   id_in?: string[]
@@ -1346,26 +1873,72 @@ export interface StoryScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  text?: string | null
-  text_not?: string | null
-  text_in?: string[]
-  text_not_in?: string[]
-  text_lt?: string | null
-  text_lte?: string | null
-  text_gt?: string | null
-  text_gte?: string | null
-  text_contains?: string | null
-  text_not_contains?: string | null
-  text_starts_with?: string | null
-  text_not_starts_with?: string | null
-  text_ends_with?: string | null
-  text_not_ends_with?: string | null
-  AND?: StoryScalarWhereInput[]
-  OR?: StoryScalarWhereInput[]
-  NOT?: StoryScalarWhereInput[]
+  createdAt?: string | null
+  createdAt_not?: string | null
+  createdAt_in?: string[]
+  createdAt_not_in?: string[]
+  createdAt_lt?: string | null
+  createdAt_lte?: string | null
+  createdAt_gt?: string | null
+  createdAt_gte?: string | null
+  updatedAt?: string | null
+  updatedAt_not?: string | null
+  updatedAt_in?: string[]
+  updatedAt_not_in?: string[]
+  updatedAt_lt?: string | null
+  updatedAt_lte?: string | null
+  updatedAt_gt?: string | null
+  updatedAt_gte?: string | null
+  published?: boolean | null
+  published_not?: boolean | null
+  title?: string | null
+  title_not?: string | null
+  title_in?: string[]
+  title_not_in?: string[]
+  title_lt?: string | null
+  title_lte?: string | null
+  title_gt?: string | null
+  title_gte?: string | null
+  title_contains?: string | null
+  title_not_contains?: string | null
+  title_starts_with?: string | null
+  title_not_starts_with?: string | null
+  title_ends_with?: string | null
+  title_not_ends_with?: string | null
+  content?: string | null
+  content_not?: string | null
+  content_in?: string[]
+  content_not_in?: string[]
+  content_lt?: string | null
+  content_lte?: string | null
+  content_gt?: string | null
+  content_gte?: string | null
+  content_contains?: string | null
+  content_not_contains?: string | null
+  content_starts_with?: string | null
+  content_not_starts_with?: string | null
+  content_ends_with?: string | null
+  content_not_ends_with?: string | null
+  meta?: string | null
+  meta_not?: string | null
+  meta_in?: string[]
+  meta_not_in?: string[]
+  meta_lt?: string | null
+  meta_lte?: string | null
+  meta_gt?: string | null
+  meta_gte?: string | null
+  meta_contains?: string | null
+  meta_not_contains?: string | null
+  meta_starts_with?: string | null
+  meta_not_starts_with?: string | null
+  meta_ends_with?: string | null
+  meta_not_ends_with?: string | null
+  AND?: PostScalarWhereInput[]
+  OR?: PostScalarWhereInput[]
+  NOT?: PostScalarWhereInput[]
 }
-export type StoryScalarWhereInputInputObject =
-  | Extract<keyof StoryScalarWhereInput, string>
+export type PostScalarWhereInputInputObject =
+  | Extract<keyof PostScalarWhereInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'id_not', alias?: string  } 
   | { name: 'id_in', alias?: string  } 
@@ -1380,82 +1953,125 @@ export type StoryScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'text', alias?: string  } 
-  | { name: 'text_not', alias?: string  } 
-  | { name: 'text_in', alias?: string  } 
-  | { name: 'text_not_in', alias?: string  } 
-  | { name: 'text_lt', alias?: string  } 
-  | { name: 'text_lte', alias?: string  } 
-  | { name: 'text_gt', alias?: string  } 
-  | { name: 'text_gte', alias?: string  } 
-  | { name: 'text_contains', alias?: string  } 
-  | { name: 'text_not_contains', alias?: string  } 
-  | { name: 'text_starts_with', alias?: string  } 
-  | { name: 'text_not_starts_with', alias?: string  } 
-  | { name: 'text_ends_with', alias?: string  } 
-  | { name: 'text_not_ends_with', alias?: string  } 
+  | { name: 'createdAt', alias?: string  } 
+  | { name: 'createdAt_not', alias?: string  } 
+  | { name: 'createdAt_in', alias?: string  } 
+  | { name: 'createdAt_not_in', alias?: string  } 
+  | { name: 'createdAt_lt', alias?: string  } 
+  | { name: 'createdAt_lte', alias?: string  } 
+  | { name: 'createdAt_gt', alias?: string  } 
+  | { name: 'createdAt_gte', alias?: string  } 
+  | { name: 'updatedAt', alias?: string  } 
+  | { name: 'updatedAt_not', alias?: string  } 
+  | { name: 'updatedAt_in', alias?: string  } 
+  | { name: 'updatedAt_not_in', alias?: string  } 
+  | { name: 'updatedAt_lt', alias?: string  } 
+  | { name: 'updatedAt_lte', alias?: string  } 
+  | { name: 'updatedAt_gt', alias?: string  } 
+  | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'published', alias?: string  } 
+  | { name: 'published_not', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'title_not', alias?: string  } 
+  | { name: 'title_in', alias?: string  } 
+  | { name: 'title_not_in', alias?: string  } 
+  | { name: 'title_lt', alias?: string  } 
+  | { name: 'title_lte', alias?: string  } 
+  | { name: 'title_gt', alias?: string  } 
+  | { name: 'title_gte', alias?: string  } 
+  | { name: 'title_contains', alias?: string  } 
+  | { name: 'title_not_contains', alias?: string  } 
+  | { name: 'title_starts_with', alias?: string  } 
+  | { name: 'title_not_starts_with', alias?: string  } 
+  | { name: 'title_ends_with', alias?: string  } 
+  | { name: 'title_not_ends_with', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'content_not', alias?: string  } 
+  | { name: 'content_in', alias?: string  } 
+  | { name: 'content_not_in', alias?: string  } 
+  | { name: 'content_lt', alias?: string  } 
+  | { name: 'content_lte', alias?: string  } 
+  | { name: 'content_gt', alias?: string  } 
+  | { name: 'content_gte', alias?: string  } 
+  | { name: 'content_contains', alias?: string  } 
+  | { name: 'content_not_contains', alias?: string  } 
+  | { name: 'content_starts_with', alias?: string  } 
+  | { name: 'content_not_starts_with', alias?: string  } 
+  | { name: 'content_ends_with', alias?: string  } 
+  | { name: 'content_not_ends_with', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
+  | { name: 'meta_not', alias?: string  } 
+  | { name: 'meta_in', alias?: string  } 
+  | { name: 'meta_not_in', alias?: string  } 
+  | { name: 'meta_lt', alias?: string  } 
+  | { name: 'meta_lte', alias?: string  } 
+  | { name: 'meta_gt', alias?: string  } 
+  | { name: 'meta_gte', alias?: string  } 
+  | { name: 'meta_contains', alias?: string  } 
+  | { name: 'meta_not_contains', alias?: string  } 
+  | { name: 'meta_starts_with', alias?: string  } 
+  | { name: 'meta_not_starts_with', alias?: string  } 
+  | { name: 'meta_ends_with', alias?: string  } 
+  | { name: 'meta_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface StoryUpdateManyWithWhereNestedInput {
-  where?: StoryScalarWhereInput
-  data?: StoryUpdateManyDataInput
+export interface PostUpdateManyWithWhereNestedInput {
+  where?: PostScalarWhereInput
+  data?: PostUpdateManyDataInput
 }
-export type StoryUpdateManyWithWhereNestedInputInputObject =
-  | Extract<keyof StoryUpdateManyWithWhereNestedInput, string>
+export type PostUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof PostUpdateManyWithWhereNestedInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface StoryUpdateManyDataInput {
-  text?: string | null
+export interface PostUpdateManyDataInput {
+  published?: boolean | null
+  title?: string | null
+  content?: string | null
+  meta?: string | null
 }
-export type StoryUpdateManyDataInputInputObject =
-  | Extract<keyof StoryUpdateManyDataInput, string>
-  | { name: 'text', alias?: string  } 
+export type PostUpdateManyDataInputInputObject =
+  | Extract<keyof PostUpdateManyDataInput, string>
+  | { name: 'published', alias?: string  } 
+  | { name: 'title', alias?: string  } 
+  | { name: 'content', alias?: string  } 
+  | { name: 'meta', alias?: string  } 
   
-export interface StoryCreateInput {
-  text?: string
-  author?: UserCreateOneWithoutStoriesInput | null
+export interface UserUpdateManyMutationInput {
+  email?: string | null
+  password?: string | null
+  name?: string | null
+  role?: prisma.Role | null
 }
-export type StoryCreateInputInputObject =
-  | Extract<keyof StoryCreateInput, string>
-  | { name: 'text', alias?: string  } 
-  | { name: 'author', alias?: string  } 
+export type UserUpdateManyMutationInputInputObject =
+  | Extract<keyof UserUpdateManyMutationInput, string>
+  | { name: 'email', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'role', alias?: string  } 
   
-export interface UserCreateOneWithoutStoriesInput {
-  connect?: UserWhereUniqueInput | null
+export interface PostSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: PostWhereInput | null
+  AND?: PostSubscriptionWhereInput[]
+  OR?: PostSubscriptionWhereInput[]
+  NOT?: PostSubscriptionWhereInput[]
 }
-export type UserCreateOneWithoutStoriesInputInputObject =
-  | Extract<keyof UserCreateOneWithoutStoriesInput, string>
-  | { name: 'connect', alias?: string  } 
-  
-export interface StoryUpdateInput {
-  text?: string | null
-  author?: UserUpdateOneWithoutStoriesInput | null
-}
-export type StoryUpdateInputInputObject =
-  | Extract<keyof StoryUpdateInput, string>
-  | { name: 'text', alias?: string  } 
-  | { name: 'author', alias?: string  } 
-  
-export interface UserUpdateOneWithoutStoriesInput {
-  delete?: boolean | null
-  disconnect?: boolean | null
-  connect?: UserWhereUniqueInput | null
-}
-export type UserUpdateOneWithoutStoriesInputInputObject =
-  | Extract<keyof UserUpdateOneWithoutStoriesInput, string>
-  | { name: 'delete', alias?: string  } 
-  | { name: 'disconnect', alias?: string  } 
-  | { name: 'connect', alias?: string  } 
-  
-export interface StoryUpdateManyMutationInput {
-  text?: string | null
-}
-export type StoryUpdateManyMutationInputInputObject =
-  | Extract<keyof StoryUpdateManyMutationInput, string>
-  | { name: 'text', alias?: string  } 
+export type PostSubscriptionWhereInputInputObject =
+  | Extract<keyof PostSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -1478,41 +2094,38 @@ export type UserSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
-export interface StorySubscriptionWhereInput {
-  mutation_in?: prisma.MutationType[]
-  updatedFields_contains?: string | null
-  updatedFields_contains_every?: string[]
-  updatedFields_contains_some?: string[]
-  node?: StoryWhereInput | null
-  AND?: StorySubscriptionWhereInput[]
-  OR?: StorySubscriptionWhereInput[]
-  NOT?: StorySubscriptionWhereInput[]
-}
-export type StorySubscriptionWhereInputInputObject =
-  | Extract<keyof StorySubscriptionWhereInput, string>
-  | { name: 'mutation_in', alias?: string  } 
-  | { name: 'updatedFields_contains', alias?: string  } 
-  | { name: 'updatedFields_contains_every', alias?: string  } 
-  | { name: 'updatedFields_contains_some', alias?: string  } 
-  | { name: 'node', alias?: string  } 
-  | { name: 'AND', alias?: string  } 
-  | { name: 'OR', alias?: string  } 
-  | { name: 'NOT', alias?: string  } 
-  
 
-export type StoryOrderByInputValues =
+export type RoleValues =
+  | 'ADMIN'
+  | 'CUSTOMER'
+  
+export type PostOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'text_ASC'
-  | 'text_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
+  | 'published_ASC'
+  | 'published_DESC'
+  | 'title_ASC'
+  | 'title_DESC'
+  | 'content_ASC'
+  | 'content_DESC'
+  | 'meta_ASC'
+  | 'meta_DESC'
   
 export type UserOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
+  | 'email_ASC'
+  | 'email_DESC'
+  | 'password_ASC'
+  | 'password_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'role_ASC'
+  | 'role_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

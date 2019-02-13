@@ -26,6 +26,7 @@ export interface NexusGenRootTypes {
     content?: string | null; // String
     createdAt: any; // DateTime!
     id: string; // ID!
+    meta?: string | null; // String
     published: boolean; // Boolean!
     title: string; // String!
     updatedAt: any; // DateTime!
@@ -64,6 +65,7 @@ export interface NexusGenFieldTypes {
     content: string | null; // String
     createdAt: any; // DateTime!
     id: string; // ID!
+    meta: string | null; // String
     published: boolean; // Boolean!
     title: string; // String!
     updatedAt: any; // DateTime!

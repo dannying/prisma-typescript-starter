@@ -2,8 +2,10 @@
   "name": "docker-postgres",
   "license": "MIT",
   "dependencies": {
+    "@types/graphql-depth-limit": "^1.1.0",
     "bcrypt": "3.0.4",
     "graphql": "14.1.1",
+    "graphql-depth-limit": "^1.1.0",
     "graphql-shield": "5.1.2",
     "graphql-yoga": "1.17.4",
     "jsonwebtoken": "8.4.0",
@@ -17,12 +19,12 @@
   "devDependencies": {
     "@types/aws-lambda": "8.10.19",
     "@types/bcrypt": "3.0.0",
+    "@types/graphql": "14.0.5",
     "@types/jsonwebtoken": "8.3.0",
     "@types/node": "10.12.23",
-    "ts-node-dev": "1.0.0-pre.32",
-    "@types/graphql": "14.0.5",
     "@types/ws": "6.0.1",
     "ts-node": "7.0.1",
+    "ts-node-dev": "1.0.0-pre.32",
     "typescript": "3.3.3"
   }
 }

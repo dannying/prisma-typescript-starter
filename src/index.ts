@@ -1,5 +1,6 @@
 import { GraphQLServer } from 'graphql-yoga';
 import { prisma } from './generated/prisma-client';
+import * as depthLimit from 'graphql-depth-limit';
 import * as path from 'path';
 import { makePrismaSchema } from 'nexus-prisma';
 import { permissions } from './permissions';
@@ -51,4 +52,11 @@ const server = new GraphQLServer({
   }
 });
 
-server.start(() => console.log(`🚀 Server ready at http://localhost:4000`));
+const optionsServer = {
+  port: 4000,
+  validationRules: [depthLimit(10)]
+};
+
+server.start(optionsServer, () =>
+  console.log(`🚀 Server ready at http://localhost:4000`)
+);
